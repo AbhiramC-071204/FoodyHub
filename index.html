@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodyHub - Sign Up</title>
+   <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="auth-page">
+
+    <!-- Background Collage (Same as Login) -->
+    <div class="bg-collage">
+        <div class="collage-item"
+            style="background-image: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=500&q=80');">
+        </div>
+        <div class="collage-item"
+            style="background-image: url('https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?auto=format&fit=crop&w=500&q=80');">
+        </div>
+        <div class="collage-item"
+            style="background-image: url('https://images.unsplash.com/photo-1493770348161-369560ae357d?auto=format&fit=crop&w=500&q=80');">
+        </div>
+        <div class="collage-item"
+            style="background-image: url('https://images.unsplash.com/photo-1482049016688-2d3e1b311543?auto=format&fit=crop&w=500&q=80');">
+        </div>
+        <div class="collage-item"
+            style="background-image: url('https://images.unsplash.com/photo-1484723091739-30a097e8f929?auto=format&fit=crop&w=500&q=80');">
+        </div>
+        <div class="collage-item"
+            style="background-image: url('https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=500&q=80');">
+        </div>
+        <div class="collage-overlay"></div>
+    </div>
+
+    <div class="auth-container">
+        <div class="auth-glass-modal signup-modal">
+            <h2 class="auth-title">food delivery<br>app signup page</h2>
+
+            <form action="index" method="post">
+                <div class="input-icon-group">
+                    <ion-icon name="person-outline" class="input-icon"></ion-icon>
+                    <input type="text" name="fullname" class="input-glass-icon" placeholder="Full Name" required>
+                </div>
+
+                <div class="input-icon-group">
+                    <ion-icon name="mail-outline" class="input-icon"></ion-icon>
+                    <input type="email" name="emailaddress" class="input-glass-icon" placeholder="Email Address"
+                        required>
+                </div>
+<div class="input-icon-group">
+    <ion-icon name="call-outline" class="input-icon"></ion-icon>
+    <input type="text" name="phone" class="input-glass-icon" placeholder="Phone Number" required>
+</div>
+
+<div class="input-icon-group">
+    <ion-icon name="home-outline" class="input-icon"></ion-icon>
+    <input type="text" name="address" class="input-glass-icon" placeholder="Address" required>
+</div>
+                <div class="input-icon-group">
+                    <ion-icon name="lock-closed-outline" class="input-icon"></ion-icon>
+                    <input type="password" name="password" class="input-glass-icon" placeholder="Password" required>
+                    <ion-icon name="eye-off-outline" class="pass-toggle"></ion-icon>
+                </div>
+
+                <div class="input-icon-group">
+                    <ion-icon name="lock-closed-outline" class="input-icon"></ion-icon>
+                    <input type="password" name="confirmpassword" class="input-glass-icon"
+                        placeholder="Confirm Password" required>
+                    <ion-icon name="eye-off-outline" class="pass-toggle"></ion-icon>
+                </div>
+
+                <button type="submit" class="btn-auth-gradient btn-signup-premium">Sign Up</button>
+            </form>
+
+            <div class="signup-footer">
+                Already have an account? <a href="login.jsp">Login</a>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script>
+        // Password Toggle Script
+        const toggleButtons = document.querySelectorAll('.pass-toggle');
+
+        toggleButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Find the input in the same parent container
+                const input = button.parentElement.querySelector('input');
+
+                if (input.type === 'password') {
+                    input.type = 'text';
+                    button.setAttribute('name', 'eye-outline');
+                } else {
+                    input.type = 'password';
+                    button.setAttribute('name', 'eye-off-outline');
+                }
+            });
+        });
+    </script>
+   <script src="JS/theme.js"></script>
+<script>
+
+function toggleSearch(){
+const box = document.getElementById("searchBox");
+box.style.display = box.style.display === "block" ? "none" : "block";
+}
+
+function toggleProfile(){
+const menu = document.getElementById("profileMenu");
+menu.style.display = menu.style.display === "block" ? "none" : "block";
+}
+
+document.addEventListener("click", function(e){
+
+const profile = document.getElementById("profileMenu");
+const avatar = e.target.closest("[onclick='toggleProfile()']");
+
+if(!avatar && profile && !profile.contains(e.target)){
+profile.style.display="none";
+}
+
+});
+
+</script>
+<script>
+
+function generateUPIQR(){
+
+const upiId = "yourupi@upi";  
+const name = "FoodyHub";
+const amount = "100";   // you can make this dynamic
+
+const upiLink =
+`upi://pay?pa=${upiId}&pn=${name}&am=${amount}&cu=INR`;
+
+const qrURL =
+"https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" + encodeURIComponent(upiLink);
+
+document.getElementById("qrImage").src = qrURL;
+document.getElementById("upiQR").style.display = "block";
+
+}
+
+</script>
+
+</body>
+
+</html>
