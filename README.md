@@ -1,5 +1,4 @@
 
-link : scholaraihublearner.lovable.app
 #  Technology Stack
 
 **Frontend:** HTML5, CSS3, JavaScript (ES6+), Ionicons
